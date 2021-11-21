@@ -1,14 +1,14 @@
-package com.example.navbartrack.ui.gallery;
+package com.example.navbartrack.ui.rateproduct;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class RateViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public RateViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }

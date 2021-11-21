@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     Gson gson = new Gson();
     UserLoginService userLoginService = new UserLoginService(LoginActivity.this);
     UserRegistrationServiceOff userRegistrationServiceOff = new UserRegistrationServiceOff(LoginActivity.this);
-
+    String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onError(String message) {
 
-                            Toast.makeText(LoginActivity.this, "Password or email wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Password or email wrong", Toast.LENGTH_LONG).show();
 
                         }
 
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(String response)  {
                             JsonElement jsonElement = gson.fromJson(response, JsonElement.class);
                             JsonObject jsonObject = jsonElement.getAsJsonObject();
-                            Toast.makeText(LoginActivity.this, jsonObject.get("accessToken").toString() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, jsonObject.get("accessToken").getAsString().replaceAll("\"","").trim() , Toast.LENGTH_SHORT).show();
                             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
                             logUser.setToken(jsonObject.get("accessToken").toString());
                             Date date = Calendar.getInstance().getTime();
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         //if user is logged in --> move to mainActivity
 
         SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-        String accessToken = sessionManagement.getSession();
+        accessToken = sessionManagement.getSession();
 
         if(accessToken != null){
             //user id logged in and so move to mainActivity
@@ -160,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
     private void moveToMainActivity() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra("accessToken", accessToken);
         startActivity(intent);
     }
 

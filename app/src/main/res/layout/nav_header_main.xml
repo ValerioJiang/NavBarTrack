@@ -16,7 +16,7 @@
 
     <ImageButton
         android:id="@+id/img_btn"
-        android:layout_width="164dp"
+        android:layout_width="166dp"
         android:layout_height="99dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
