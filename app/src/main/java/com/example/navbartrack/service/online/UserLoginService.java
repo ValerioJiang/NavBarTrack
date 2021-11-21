@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 
 import com.example.navbartrack.model.UserLogin;
 import com.example.navbartrack.service.VolleySingleton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -20,7 +21,7 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 
 public class UserLoginService {
-    public static final String loginUrl = "https://lam21.modron.network/auth/login";
+    public static final String loginUrl = "https://lam21.iot-prism-lab.cs.unibo.it/auth/login";
 
     Context context;
     public static final Gson gson = new Gson();

@@ -21,7 +21,7 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 
 public class UserRegistrationService {
-    public static final String registrationUrl = "https://lam21.modron.network/users";
+    public static final String registrationUrl = "https://lam21.iot-prism-lab.cs.unibo.it/users";
 
     Context context;
     public static final Gson gson = new Gson();
